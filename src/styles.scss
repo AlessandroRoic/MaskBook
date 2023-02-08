@@ -1,0 +1,25 @@
+@import "styles/variables";
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  font-family: Arial, serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  color: $font-color;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+}

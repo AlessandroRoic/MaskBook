@@ -1,0 +1,58 @@
+{
+  "feedPosts": {
+    "response": [
+      {
+        "id": 1,
+        "createdTime": "2023-01-26T16:14:59.422Z",
+        "author": {
+          "firstName": "Alessandro",
+          "lastName": "Roic",
+          "profilePhotoUrl": "https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc?auto=format&w=1000"
+        },
+        "content": {
+          "description": "This is a short post to test the feed post"
+        },
+        "interactions": {
+          "reactions": 4,
+          "comments": 2,
+          "shares": 1
+        }
+      },
+      {
+        "id": 2,
+        "createdTime": "2023-01-26T16:14:59.422Z",
+        "author": {
+          "firstName": "John",
+          "lastName": "Smith",
+          "profilePhotoUrl": "https://i.pinimg.com/736x/1f/d2/4d/1fd24d7874f7cb34e0d840ceb7b6ec22.jpg"
+        },
+        "content": {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        "interactions": {
+          "reactions": 4,
+          "comments": 2,
+          "shares": 1
+        }
+      },
+      {
+        "id": 3,
+        "createdTime": "2023-01-28T16:14:59.422Z",
+        "author": {
+          "firstName": "Michael",
+          "lastName": "Scott",
+          "profilePhotoUrl": "https://imgflip.com/s/meme/Smiling-Cat.jpg"
+        },
+        "content": {
+          "description": "Haha funny meme",
+          "imageSrc": "https://i.imgflip.com/79r2l9.jpg"
+        },
+        "interactions": {
+          "reactions": 4,
+          "comments": 2,
+          "shares": 1
+        }
+      }
+    ]
+  }
+}

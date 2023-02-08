@@ -1,0 +1,10 @@
+.news-feed {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px 20px 0 20px;
+    justify-content: center;
+    align-items: center;
+  }
+}
