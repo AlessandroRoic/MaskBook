@@ -29,13 +29,16 @@ export default function FeedPost({
       <div className="feed-post__content">
         <div className="content__text">{content?.description}</div>
         {content?.imageSrc && (
-          <img alt="content-image" src={content?.imageSrc} className="content__image"/>
+          <img
+            alt="content-image"
+            src={content?.imageSrc}
+            className="content__image"
+          />
         )}
       </div>
       <div className="feed-post__interactions">
         <div>
-          <ThumbsUp height={14} width={14} />
-          {" "}{interactions?.reactions}
+          <ThumbsUp height={14} width={14} /> {interactions?.reactions}
         </div>
         <div className="flex-row">
           <div>Comments: {interactions?.comments}</div>
