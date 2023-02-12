@@ -1,17 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import "./NewsFeed.scss";
-import { FeedPostData } from "../../types/FeedPost.type";
+import {FeedPostData} from "../../types/FeedPost.type";
 import FeedPost from "../../components/FeedPost/FeedPost";
 import useApiService from "../../services/useApiService";
-import { InfiniteScroll } from "../../components/InfiniteScroll/InfiniteScroll";
-import { useVirtualizedList } from "../../hooks/useVirtualizedList";
-import VirtualizedElement from "../../components/VirtualizedElement/VirtualizedElement";
+import {InfiniteScroll} from "../../components/InfiniteScroll/InfiniteScroll";
 
 export default function NewsFeed() {
   const [posts, setPosts] = useState<FeedPostData[]>([]);
   const [cursor, setCursor] = useState(0);
   const [nextCursor, setNextCursor] = useState(0);
-  const { observer, isElementVisible } = useVirtualizedList();
+
   const updateCursor = useCallback(() => setCursor(nextCursor), [nextCursor]);
 
   useEffect(() => {
@@ -47,14 +45,14 @@ export default function NewsFeed() {
       <InfiniteScroll callBack={updateCursor}>
         {!!posts.length &&
           posts.map(({ id, createdTime, author, content, interactions }) => (
-            <VirtualizedElement observer={observer} key={id} id={id} isVisible={isElementVisible(id)}>
-              <FeedPost
-                createdTime={createdTime}
-                author={author}
-                content={content}
-                interactions={interactions}
-              />
-            </VirtualizedElement>
+            <FeedPost
+              key={id}
+              id={id}
+              createdTime={createdTime}
+              author={author}
+              content={content}
+              interactions={interactions}
+            />
           ))}
       </InfiniteScroll>
     </div>
