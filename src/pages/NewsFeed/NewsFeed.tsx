@@ -1,9 +1,9 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./NewsFeed.scss";
-import {FeedPostData} from "../../types/FeedPost.type";
+import { FeedPostData } from "../../types/FeedPost.type";
 import FeedPost from "../../components/FeedPost/FeedPost";
 import useApiService from "../../services/useApiService";
-import {InfiniteScroll} from "../../components/InfiniteScroll/InfiniteScroll";
+import { InfiniteScroll } from "../../components/InfiniteScroll/InfiniteScroll";
 
 export default function NewsFeed() {
   const [posts, setPosts] = useState<FeedPostData[]>([]);
@@ -47,7 +47,6 @@ export default function NewsFeed() {
           posts.map(({ id, createdTime, author, content, interactions }) => (
             <FeedPost
               key={id}
-              id={id}
               createdTime={createdTime}
               author={author}
               content={content}

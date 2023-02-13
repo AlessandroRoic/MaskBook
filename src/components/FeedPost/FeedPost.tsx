@@ -4,20 +4,18 @@ import { FeedPostData } from "../../types/FeedPost.type";
 import ThumbsUp from "../../assets/icons/ThumbsUp";
 import { useVirtualizedElement } from "../../hooks/useVirtualizedElement";
 
-export type FeedPostProps = Partial<FeedPostData> & { id: number };
+export type FeedPostProps = Partial<FeedPostData> & {};
 
 export default function FeedPost({
   createdTime,
   author,
   content,
   interactions,
-  id,
 }: FeedPostProps) {
   const { isVisible, elementRef, placeholderHeight } = useVirtualizedElement();
 
   return (
     <article
-      data-id={id}
       className={isVisible ? "feed-post__wrapper" : ""}
       ref={elementRef}
       style={!isVisible ? { height: placeholderHeight } : {}}
