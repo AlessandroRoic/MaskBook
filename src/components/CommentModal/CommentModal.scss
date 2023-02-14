@@ -1,0 +1,8 @@
+@import "src/styles/variables";
+
+.comment-modal {
+  background: $dark-grey;
+  height: 98vh;
+  width: 90vh;
+  overflow-y: scroll;
+}

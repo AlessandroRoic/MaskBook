@@ -1,5 +1,11 @@
 @import "styles/variables";
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -13,7 +19,7 @@
 
 * {
   font-family: Arial, serif;
-  font-size: 14px;
+  font-size: 15px;
   box-sizing: border-box;
   color: $font-color;
 }

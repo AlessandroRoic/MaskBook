@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FeedPost.scss";
 import { FeedPostData } from "../../types/FeedPost.type";
 import ThumbsUp from "../../assets/icons/ThumbsUp";
 import { useVirtualizedElement } from "../../hooks/useVirtualizedElement";
+import { CommentModal } from "../CommentModal/CommentModal";
 
 export type FeedPostProps = Partial<FeedPostData> & {};
 
@@ -12,6 +13,9 @@ export default function FeedPost({
   content,
   interactions,
 }: FeedPostProps) {
+  const [likedPost, setLikedPost] = useState(false);
+  const [commentModalVisible, showCommentModal] = useState(false);
+  const [sharePopupVisible, showSharePopup] = useState(false);
   const { isVisible, elementRef, placeholderHeight } = useVirtualizedElement();
 
   return (
@@ -46,7 +50,7 @@ export default function FeedPost({
             )}
           </div>
           <div className="feed-post__interactions">
-            <div>
+            <div className="flex-row">
               <ThumbsUp height={14} width={14} /> {interactions?.reactions}
             </div>
             <div className="flex-row">
@@ -55,14 +59,30 @@ export default function FeedPost({
             </div>
           </div>
           <div className="feed-post__actions">
-            <div className="flex-row flex-center">
+            <button
+              className={`action ${likedPost ? "action--clicked" : ""}`}
+              onClick={() => setLikedPost((prev) => !prev)}
+            >
               <ThumbsUp height={18} width={18} /> Like
-            </div>
-            <div>Comment</div>
-            <div>Share</div>
+            </button>
+            <button className="action" onClick={() => showCommentModal(true)}>
+              Comment
+            </button>
+            <button className="action" onClick={() => showSharePopup(true)}>
+              Share
+            </button>
           </div>
         </>
       )}
+      <CommentModal
+        show={commentModalVisible}
+        feedPostProps={{
+          createdTime,
+          author,
+          content,
+          interactions,
+        }}
+      />
     </article>
   );
 }
