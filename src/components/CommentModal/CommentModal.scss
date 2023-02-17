@@ -2,7 +2,69 @@
 
 .comment-modal {
   background: $dark-grey;
-  height: 98vh;
-  width: 90vh;
-  overflow-y: scroll;
+  height: 90vh;
+  max-width: 700px;
+  border-radius: 8px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $grey;
+    padding: 0 5px 0 5px;
+  }
+
+  &__poster {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 15px 0 15px 0;
+  }
+
+  &__placeholder {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__content {
+    overflow-y: scroll;
+    max-height: 73vh;
+
+    &::-webkit-scrollbar {
+      width: 8px !important;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $grey !important;
+      border-radius: 10px;
+    }
+  }
+
+  &__close {
+    background: transparent;
+    border: none;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 10px 10px 0 10px;
+  }
+
+  &__comment-field {
+    flex-grow: 1;
+    border: none;
+    border-radius: 15px;
+    background-color: $grey;
+    padding-left: 10px;
+  }
+
+  &__profile-icon {
+    border-radius: 50%;
+  }
 }

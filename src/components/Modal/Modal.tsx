@@ -7,13 +7,5 @@ export type ModalProps = {
 };
 
 export function Modal({ children, show }: ModalProps) {
-  return (
-    <>
-      {show && (
-        <div className="modal">
-          <div>{children}</div>
-        </div>
-      )}
-    </>
-  );
+  return <>{show && <div className="modal">{children}</div>}</>;
 }

@@ -5,13 +5,16 @@ import ThumbsUp from "../../assets/icons/ThumbsUp";
 import { useVirtualizedElement } from "../../hooks/useVirtualizedElement";
 import { CommentModal } from "../CommentModal/CommentModal";
 
-export type FeedPostProps = Partial<FeedPostData> & {};
+export type FeedPostProps = Partial<FeedPostData> & {
+  isModal?: boolean;
+};
 
 export default function FeedPost({
   createdTime,
   author,
   content,
   interactions,
+  isModal = false,
 }: FeedPostProps) {
   const [likedPost, setLikedPost] = useState(false);
   const [commentModalVisible, showCommentModal] = useState(false);
@@ -65,7 +68,10 @@ export default function FeedPost({
             >
               <ThumbsUp height={18} width={18} /> Like
             </button>
-            <button className="action" onClick={() => showCommentModal(true)}>
+            <button
+              className="action"
+              onClick={() => !isModal && showCommentModal(true)}
+            >
               Comment
             </button>
             <button className="action" onClick={() => showSharePopup(true)}>
@@ -74,15 +80,19 @@ export default function FeedPost({
           </div>
         </>
       )}
-      <CommentModal
-        show={commentModalVisible}
-        feedPostProps={{
-          createdTime,
-          author,
-          content,
-          interactions,
-        }}
-      />
+      {!isModal && (
+        <CommentModal
+          show={commentModalVisible}
+          onClose={() => showCommentModal(false)}
+          feedPostProps={{
+            createdTime,
+            author,
+            content,
+            interactions,
+            isModal: true,
+          }}
+        />
+      )}
     </article>
   );
 }
