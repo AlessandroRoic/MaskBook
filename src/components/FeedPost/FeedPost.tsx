@@ -19,7 +19,8 @@ export default function FeedPost({
   const [likedPost, setLikedPost] = useState(false);
   const [commentModalVisible, showCommentModal] = useState(false);
   const [sharePopupVisible, showSharePopup] = useState(false);
-  const { isVisible, elementRef, placeholderHeight } = useVirtualizedElement();
+  const { isVisible, elementRef, placeholderHeight, waitForElementRef } =
+    useVirtualizedElement();
 
   return (
     <article
@@ -48,7 +49,7 @@ export default function FeedPost({
               <img
                 alt="content-image"
                 src={content?.imageSrc}
-                className="content__image"
+                onLoad={waitForElementRef}
               />
             )}
           </div>
