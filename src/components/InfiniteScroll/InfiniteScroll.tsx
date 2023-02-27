@@ -1,6 +1,6 @@
-import React, { ReactNode, useCallback, useEffect, useRef } from "react";
-import useObservable from "../../hooks/useObservable";
-import { SyncLoader } from "react-spinners";
+import React, {ReactNode, useCallback, useEffect, useRef} from "react";
+import {SyncLoader} from "react-spinners";
+import useObservable from "../VirtualizedList/useObservable";
 
 type InfiniteScrollProps = {
   children: Array<ReactNode> | ReactNode;

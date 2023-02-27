@@ -3,7 +3,7 @@ import {Content} from "./Content.type";
 import {Interactions} from "./Interactions.types";
 
 export type FeedPostData = {
-  id: number;
+  id: string;
   createdTime: Date;
   author: User;
   content: Content;

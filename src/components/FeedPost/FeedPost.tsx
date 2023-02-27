@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./FeedPost.scss";
 import { FeedPostData } from "../../types/FeedPost.type";
 import ThumbsUp from "../../assets/icons/ThumbsUp";
-import { useVirtualizedElement } from "../../hooks/useVirtualizedElement";
 import { CommentModal } from "../CommentModal/CommentModal";
+import { useVirtualizedElement } from "../VirtualizedList/useVirtualizedElement";
 
 export type FeedPostProps = Partial<FeedPostData> & {
   isModal?: boolean;
+  id: string;
 };
 
 export default function FeedPost({
@@ -15,18 +16,20 @@ export default function FeedPost({
   content,
   interactions,
   isModal = false,
+  id,
 }: FeedPostProps) {
   const [likedPost, setLikedPost] = useState(false);
   const [commentModalVisible, showCommentModal] = useState(false);
   const [sharePopupVisible, showSharePopup] = useState(false);
-  const { isVisible, elementRef, placeholderHeight, waitForElementRef } =
-    useVirtualizedElement();
+  const { isVisible, elementRef, placeholderHeight } = isModal
+    ? useVirtualizedElement(id)
+    : { isVisible: true, elementRef: null, placeholderHeight: null };
 
   return (
     <article
       className={isVisible ? "feed-post__wrapper" : ""}
       ref={elementRef}
-      style={!isVisible ? { height: placeholderHeight } : {}}
+      style={placeholderHeight ? { height: placeholderHeight } : {}}
     >
       {isVisible && (
         <>
@@ -46,11 +49,7 @@ export default function FeedPost({
           <div className="feed-post__content">
             <div className="content__text">{content?.description}</div>
             {content?.imageSrc && (
-              <img
-                alt="content-image"
-                src={content?.imageSrc}
-                onLoad={waitForElementRef}
-              />
+              <img alt="content-image" src={content?.imageSrc} />
             )}
           </div>
           <div className="feed-post__interactions">
@@ -91,6 +90,7 @@ export default function FeedPost({
             content,
             interactions,
             isModal: true,
+            id,
           }}
         />
       )}

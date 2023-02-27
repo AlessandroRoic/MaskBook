@@ -4,6 +4,7 @@ import { FeedPostData } from "../../types/FeedPost.type";
 import FeedPost from "../../components/FeedPost/FeedPost";
 import useApiService from "../../services/useApiService";
 import { InfiniteScroll } from "../../components/InfiniteScroll/InfiniteScroll";
+import VirtualizedList from "../../components/VirtualizedList/VirtualizedList";
 
 export default function NewsFeed() {
   const [posts, setPosts] = useState<FeedPostData[]>([]);
@@ -43,16 +44,19 @@ export default function NewsFeed() {
   return (
     <div className="news-feed__wrapper">
       <InfiniteScroll callBack={updateCursor}>
-        {!!posts.length &&
-          posts.map(({ id, createdTime, author, content, interactions }) => (
-            <FeedPost
-              key={id}
-              createdTime={createdTime}
-              author={author}
-              content={content}
-              interactions={interactions}
-            />
-          ))}
+        <VirtualizedList>
+          {!!posts.length &&
+            posts.map(({ id, createdTime, author, content, interactions }) => (
+              <FeedPost
+                key={id}
+                id={id}
+                createdTime={createdTime}
+                author={author}
+                content={content}
+                interactions={interactions}
+              />
+            ))}
+        </VirtualizedList>
       </InfiniteScroll>
     </div>
   );
