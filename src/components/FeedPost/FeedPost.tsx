@@ -4,6 +4,7 @@ import { FeedPostData } from "../../types/FeedPost.type";
 import ThumbsUp from "../../assets/icons/ThumbsUp";
 import { CommentModal } from "../CommentModal/CommentModal";
 import { useVirtualizedElement } from "../VirtualizedList/useVirtualizedElement";
+import { SharePopup } from "../SharePopup/SharePopup";
 
 export type FeedPostProps = Partial<FeedPostData> & {
   isModal?: boolean;
@@ -77,6 +78,9 @@ export default function FeedPost({
             <button className="action" onClick={() => showSharePopup(true)}>
               Share
             </button>
+            {sharePopupVisible && (
+                <SharePopup onClose={() => showSharePopup(false)} />
+            )}
           </div>
         </>
       )}

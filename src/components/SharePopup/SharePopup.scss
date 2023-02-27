@@ -1,5 +1,38 @@
+@import "src/styles/variables";
+
 .share-popup {
   &__wrapper {
     position: absolute;
+    padding: 8px;
+    top: 0;
+    left: 0;
+    background-color: $dark-grey;
+    transform: translate(624px, 511px) translate(-50%, 0px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    gap: 5px;
+    box-shadow: 0 12px 28px 0 $box-shadow, 0 2px 4px 0 $box-shadow;
+
+    button {
+      display: flex;
+      gap: 10px;
+      text-align: left;
+      background-color: transparent;
+      border: none;
+      align-content: center;
+
+      &:hover {
+        background: $grey;
+        border-radius: 4px;
+      }
+    }
   }
+}
+
+.arrow {
+  position: absolute;
+  transform: translate(238px, -30px);
+  fill: $dark-grey;
+  stroke: $dark-grey;
 }
